@@ -17,7 +17,7 @@ const DeveloperPage = ({ setClicked }) => {
           />
           <div className="developer1-text-container">
             <h2>Yoomin Kang</h2>
-            <p>Archi. 21</p>
+            <p>Developer | Archi. 21</p>
           </div>
         </div>
         <div className="developer1-button-container">
