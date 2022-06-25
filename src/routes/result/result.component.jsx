@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import "./result.styles.scss";
 import { useState } from "react";
 import DeveloperPage from "../../components/developerPage/developerPage.component";
+import copy from "copy-to-clipboard";
 
 const Result = () => {
   const [clicked, setClicked] = useState(false);
@@ -20,6 +21,15 @@ const Result = () => {
   }
   console.log(mbti["description"][0]);
 
+  const handleCopyClipBoard = async (text) => {
+    try {
+      copy(text);
+
+      alert("클립보드에 복사되었습니다.");
+    } catch (error) {
+      alert("복사 실패");
+    }
+  };
   return (
     <>
       <div className="result-background">
@@ -34,7 +44,14 @@ const Result = () => {
               <Link to="/">
                 <button className="result-button-to-home">처음으로</button>
               </Link>
-              <button className="result-button-share">공유하기</button>
+              <button
+                className="result-button-share"
+                onClick={() => {
+                  handleCopyClipBoard(window.location.href);
+                }}
+              >
+                링크복사
+              </button>
             </div>
             <span>
               <p
