@@ -72,7 +72,7 @@ const Question = () => {
     <div className="question-background">
       <div className="question-box">
         <div className="question-container">
-          <div className="title-container">
+          <div className="question-title-container">
             <h1 className="question-title">
               <TextTransition
                 className="question-title-transition"
@@ -96,7 +96,7 @@ const Question = () => {
               </button>
             </div>
             <Link to="/">
-              <button className="button-to-home">처음으로</button>
+              <button className="result-button-to-home">처음으로</button>
             </Link>
           </div>
         </div>
