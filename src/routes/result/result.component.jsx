@@ -30,6 +30,7 @@ const Result = () => {
       alert("복사 실패");
     }
   };
+  console.log(mbti["description"].length);
   return (
     <>
       <div className="result-background">
@@ -40,7 +41,22 @@ const Result = () => {
               <h1 className="result-title">{mbtiName}</h1>
             </div>
             <p className="result-subhead">{mbti["subhead"]}</p>
-            <p className="result-paragraph">{mbti["description"]}</p>
+            {mbti["description"].length === 5 ? (
+              <ul className="result-paragraph">
+                <li>{mbti["description"][0]}</li>
+                <li>{mbti["description"][1]}</li>
+                <li>{mbti["description"][2]}</li>
+                <li>{mbti["description"][3]}</li>
+                <li>{mbti["description"][4]}</li>
+              </ul>
+            ) : (
+              <ul className="result-paragraph">
+                <li>{mbti["description"][0]}</li>
+                <li>{mbti["description"][1]}</li>
+                <li>{mbti["description"][2]}</li>
+                <li>{mbti["description"][3]}</li>
+              </ul>
+            )}
             <div className="result-buttons-container">
               <Link to="/">
                 <button className="result-button-to-home">처음으로</button>
@@ -72,6 +88,11 @@ const Result = () => {
                 }}
               >
                 개발자에게 관심 주기
+              </p>
+            </span>
+            <span>
+              <p className="text-reference">
+                MBTI Reference : https://www.mbti.co.kr/
               </p>
             </span>
           </div>

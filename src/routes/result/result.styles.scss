@@ -42,12 +42,12 @@
 }
 .result-paragraph {
   color: black;
-  font-size: 1.8vh;
-  text-align: center;
+  font-size: 1.5vh;
   margin-bottom: 5vh;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
   word-break: keep-all;
+  line-height: 150%;
 }
 
 .result-buttons-container {
@@ -137,8 +137,20 @@
   position: fixed;
   bottom: 5vh;
   text-align: center !important ;
-  font-size: 1.5vh;
+  font-size: 1.7vh;
   font-weight: 500;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  cursor: pointer;
+}
+
+.text-reference {
+  position: fixed;
+  bottom: 2vh;
+  text-align: center !important ;
+  font-size: 1vh;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
   transform: translate(-50%, -50%);
   left: 50%;
   cursor: pointer;
