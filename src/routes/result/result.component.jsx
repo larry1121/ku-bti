@@ -53,6 +53,16 @@ const Result = () => {
                 링크복사
               </button>
             </div>
+            <div className="kuplace-button-container">
+              <button
+                className="button-kuplace"
+                onClick={() => {
+                  window.open("https://kuplace.kr");
+                }}
+              >
+                Visit KUplace
+              </button>
+            </div>
             <span>
               <p
                 className="result-button-developer"

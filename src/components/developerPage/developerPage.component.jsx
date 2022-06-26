@@ -16,7 +16,7 @@ const DeveloperPage = ({ setClicked }) => {
             alt="Yoomin Kang's Memoji"
           />
           <div className="developer1-text-container">
-            <h2>Yoomin Kang</h2>
+            <h2>YM Kang</h2>
             <p>Developer | Archi. 21</p>
           </div>
         </div>
