@@ -43,7 +43,7 @@ const Question = () => {
     }
   };
   const toNext = () => {
-    if (questionNumber < 12) setQuestionNumber(questionNumber + 1);
+    if (questionNumber < 20) setQuestionNumber(questionNumber + 1);
     else {
       const eOri = cntE > cntI ? "E" : "I";
       const sOrn = cntS > cntN ? "S" : "N";

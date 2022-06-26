@@ -39,7 +39,8 @@ const Result = () => {
             <div className="result-title-container">
               <h1 className="result-title">{mbtiName}</h1>
             </div>
-            <p className="result-paragraph">{mbti["description"][0]["des"]}</p>
+            <p className="result-subhead">{mbti["subhead"]}</p>
+            <p className="result-paragraph">{mbti["description"]}</p>
             <div className="result-buttons-container">
               <Link to="/">
                 <button className="result-button-to-home">처음으로</button>
