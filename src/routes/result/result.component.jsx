@@ -37,6 +37,7 @@ const Result = () => {
         {/* <DeveloperPage setClicked={setClicked} /> */}
         <div className="result-box">
           <div className="result-container">
+            <p className="result-top-text">당신의 유형은</p>
             <div className="result-title-container">
               <h1 className="result-title">{mbtiName}</h1>
             </div>
