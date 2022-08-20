@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./question.styles.scss";
 import Questions from "../../common/api/questionsApi.json";
 import TextTransition, { presets } from "react-text-transition";
+import { useEffect } from "react";
 
 const Question = () => {
   const TotalQuestioncnt = Object.keys(Questions).length;
@@ -18,6 +19,18 @@ const Question = () => {
   const [cntP, setCntP] = useState(0);
   const [cntK, setCntK] = useState(0);
   const [cntY, setCntY] = useState(0);
+  useEffect(()=>{
+    toNext()
+   }, [cntE,
+    cntI,
+    cntS,
+    cntN,
+    cntT,
+    cntF,
+    cntJ,
+    cntP,
+    cntK,
+    cntY]) 
   console.log(
     `E${cntE} I${cntI} S${cntS} N${cntN} T${cntT} F${cntF} J${cntJ} P${cntP} K${cntK} Y${cntY}`
   );
@@ -51,11 +64,12 @@ const Question = () => {
   const toNext = () => {
     if (questionNumber < TotalQuestioncnt) setQuestionNumber(questionNumber + 1);
     else {
+
       const eOri = cntE > cntI ? "E" : "I";
       const sOrn = cntS > cntN ? "S" : "N";
       const tOrf = cntT > cntF ? "T" : "F";
       const jOrp = cntJ > cntP ? "J" : "P";
-      const kOry = cntK > cntY ? "K" : "Y";
+      const kOry = cntK >= cntY ? "K" : "Y";
       navigate(`/result/${eOri}${sOrn}${tOrf}${jOrp}${kOry}`);
     }
   };
@@ -64,14 +78,16 @@ const Question = () => {
     const selectedType = Questions[questionNumber]["answers"][0]["type"];
     console.log(selectedType);
     handleTypes(selectedType);
-    toNext();
+    // toNext();
+    // 동기처리문제로 수정
+    //https://codingapple.com/unit/react-setstate-async-problems/
   };
   const handleOnClick1 = () => {
     console.log(questionNumber);
     const selectedType = Questions[questionNumber]["answers"][1]["type"];
     console.log(selectedType);
     handleTypes(selectedType);
-    toNext();
+    // toNext();
   };
 
   console.log(Questions[0]);

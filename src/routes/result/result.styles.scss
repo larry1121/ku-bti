@@ -237,3 +237,48 @@
   -khtml-user-select: none;
   user-select: none;
 }
+.eagle-picture {
+  width: 20vw;
+  justify-content: center;
+  animation: box-ani 2s linear 0s infinite alternate; margin-top: 0;}
+        
+  // .bird {
+  //   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/174479/bird-cells-new.svg');
+  //   background-size: auto 100%;
+  //   width: 88px;
+  //   height: 125px;
+  //   will-change: background-position;
+  //   animation-name: fly-cycle;
+	// animation-duration: 1s;
+	// animation-delay: -0.5s;
+	// animation-timing-function: steps(10);
+	// animation-iteration-count: infinite;
+  // }
+  // @keyframes fly-cycle {
+  //   100% {
+  //   background-position: -900px 0;
+  //   } 
+  // }
+  
+  // .bird-container {
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%,-50%);
+  //   will-change: transform;
+  // }
+
+
+@keyframes motion {
+	0% {margin-top: 0px;}
+	100% {margin-top: 10px;}
+
+}
+@keyframes box-ani {
+	from {
+		transform: translate(-100px, 0);
+	}
+	to {
+		transform: translate(600px, 0);
+	}
+}

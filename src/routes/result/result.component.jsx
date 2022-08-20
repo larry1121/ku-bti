@@ -39,12 +39,17 @@ const Result = () => {
     }
   };
   console.log(mbti["description"].length);
+
+  
   return (
     <>
       <div className="result-background">
+      
+     
         {/* <DeveloperPage setClicked={setClicked} /> */}
         <div className="result-box">
           <div className="result-container">
+            
             {isKorea ? <p className="result-top-text">당신의 유형은</p>:
             <p className="result-top-text-Y">당신의 유형은</p>
             }
@@ -56,6 +61,7 @@ const Result = () => {
       
             </div>
             <p className="result-subhead">{mbti["subhead"]}</p>
+            
             {mbti["description"].length === 5 ? (
               <ul className="result-paragraph">
                 <li>{mbti["description"][0]}</li>
@@ -102,7 +108,7 @@ const Result = () => {
               <button
                 className="button-kuplace"
                 onClick={() => {
-                  window.open("kuplace.page.link/promotion");
+                  window.open("https://kuplace.page.link/promotion");
                 }}
               >
                 Visit KUplace
@@ -125,6 +131,11 @@ const Result = () => {
             </span>
           </div>
         </div>
+        {isKorea ? <p></p>:
+            <div className="bird-container">
+              <img className="eagle-picture" alt="eagle" src={require("../../assets/pngwing.com.png")} />
+            </div>
+            }
       </div>
       {clicked ? <DeveloperPage setClicked={setClicked} /> : null}
     </>
