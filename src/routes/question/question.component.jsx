@@ -5,6 +5,7 @@ import Questions from "../../common/api/questionsApi.json";
 import TextTransition, { presets } from "react-text-transition";
 
 const Question = () => {
+  const TotalQuestioncnt = Object.keys(Questions).length;
   const navigate = useNavigate();
   const [questionNumber, setQuestionNumber] = useState(1);
   const [cntE, setCntE] = useState(0);
@@ -15,9 +16,10 @@ const Question = () => {
   const [cntF, setCntF] = useState(0);
   const [cntJ, setCntJ] = useState(0);
   const [cntP, setCntP] = useState(0);
-
+  const [cntK, setCntK] = useState(0);
+  const [cntY, setCntY] = useState(0);
   console.log(
-    `E${cntE} I${cntI} S${cntS} N${cntN} T${cntT} F${cntF} J${cntJ} P${cntP}`
+    `E${cntE} I${cntI} S${cntS} N${cntN} T${cntT} F${cntF} J${cntJ} P${cntP} K${cntK} Y${cntY}`
   );
   const handleTypes = (selectedType) => {
     switch (Questions[questionNumber]["option"]) {
@@ -37,19 +39,24 @@ const Question = () => {
         if (selectedType === "J") setCntJ(cntJ + 1);
         else if (selectedType === "P") setCntP(cntP + 1);
         break;
+      case "KY":
+        if (selectedType === "K") setCntK(cntK + 1);
+        else if (selectedType === "Y") setCntY(cntY + 1);
+        break;
       default:
         console.log(Questions[questionNumber]["option"]);
         console.log("ERROR");
     }
   };
   const toNext = () => {
-    if (questionNumber < 20) setQuestionNumber(questionNumber + 1);
+    if (questionNumber < TotalQuestioncnt) setQuestionNumber(questionNumber + 1);
     else {
       const eOri = cntE > cntI ? "E" : "I";
       const sOrn = cntS > cntN ? "S" : "N";
       const tOrf = cntT > cntF ? "T" : "F";
       const jOrp = cntJ > cntP ? "J" : "P";
-      navigate(`/result/${eOri}${sOrn}${tOrf}${jOrp}`);
+      const kOry = cntK > cntY ? "K" : "Y";
+      navigate(`/result/${eOri}${sOrn}${tOrf}${jOrp}${kOry}`);
     }
   };
   const handleOnClick0 = () => {
@@ -81,7 +88,7 @@ const Question = () => {
                 {questionNumber}
               </TextTransition>
             </h1>
-            <h1 className="question-title">/20</h1>
+            <h1 className="question-title">/{TotalQuestioncnt}</h1>
           </div>
           <p className="question-paragraph">
             {Questions[questionNumber]["question"]}

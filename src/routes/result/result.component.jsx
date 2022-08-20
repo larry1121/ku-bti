@@ -7,9 +7,17 @@ import copy from "copy-to-clipboard";
 
 const Result = () => {
   const [clicked, setClicked] = useState(false);
-  const { mbtiName } = useParams();
-  console.log(mbtiName);
+  const { mbtiInfo } = useParams();
+  var isKorea =true;
+  console.log(mbtiInfo);
   console.log(Mbtis);
+  const mbtiName=mbtiInfo.substring(0,4);
+  const KYName=mbtiInfo.substring(4,5);
+  if(KYName==="Y"){
+    isKorea=false
+  };
+  console.log(mbtiName);
+  console.log(KYName);
   const mbti = Mbtis[mbtiName];
   console.log(mbti);
   if (!mbti) {
@@ -37,9 +45,15 @@ const Result = () => {
         {/* <DeveloperPage setClicked={setClicked} /> */}
         <div className="result-box">
           <div className="result-container">
-            <p className="result-top-text">당신의 유형은</p>
+            {isKorea ? <p className="result-top-text">당신의 유형은</p>:
+            <p className="result-top-text-Y">당신의 유형은</p>
+            }
+            
             <div className="result-title-container">
-              <h1 className="result-title">{mbtiName}</h1>
+            {isKorea ? <h1 className="result-title">{mbtiName}</h1>:
+            <h1 className="result-title-Y">{mbtiName}</h1>
+            }
+      
             </div>
             <p className="result-subhead">{mbti["subhead"]}</p>
             {mbti["description"].length === 5 ? (
@@ -60,22 +74,35 @@ const Result = () => {
             )}
             <div className="result-buttons-container">
               <Link to="/">
-                <button className="result-button-to-home">처음으로</button>
+              {isKorea ? <button className="result-button-to-home">처음으로</button>:
+            <button className="result-button-to-home-Y">처음으로</button>
+            }
+                
               </Link>
-              <button
+              {isKorea ? <button
                 className="result-button-share"
                 onClick={() => {
                   handleCopyClipBoard(window.location.href);
                 }}
               >
                 링크복사
-              </button>
+              </button>:
+            <button
+            className="result-button-share-Y"
+            onClick={() => {
+              handleCopyClipBoard(window.location.href);
+            }}
+          >
+            링크복사
+          </button>
+            }
+              
             </div>
             <div className="kuplace-button-container">
               <button
                 className="button-kuplace"
                 onClick={() => {
-                  window.open("https://kuplace.kr");
+                  window.open("kuplace.page.link/promotion");
                 }}
               >
                 Visit KUplace
