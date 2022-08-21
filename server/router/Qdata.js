@@ -1,0 +1,16 @@
+import express from 'express';
+import {} from 'express-async-errors';
+
+import * as QdataController from '../controller/Qdata.js';
+
+
+const router = express.Router();
+
+
+router.get('/',QdataController.getQdata);
+router.put('/:id/:type',QdataController.updateQdata);
+router.put('/reset',QdataController.cntQdataReset);
+router.get('/:id',QdataController.getQdataById);
+
+
+export default router;

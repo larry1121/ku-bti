@@ -14,10 +14,3 @@ export function getQdata() {
   return db.collection('Qdata');
 }
 
-export function getUsers() {
-  return db.collection('users');
-}
-
-export function getTweets() {
-  return db.collection('tweets');
-}

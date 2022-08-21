@@ -3,8 +3,8 @@ import 'express-async-errors';
 import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import tweetsRouter from './router/tweets.js';
-import authRouter from './router/auth.js';
+
+import QdataRouter from './router/Qdata.js';
 import { config } from './config.js';
 import { initSocket } from './connection/socket.js';
 import { connectDB } from './database/database.js';
@@ -16,7 +16,7 @@ app.use(helmet());
 app.use(cors());
 app.use(morgan('tiny'));
 
-app.use('/Qdata', authRouter);
+app.use('/Qdata', QdataRouter);
 
 app.use((req, res, next) => {
   res.sendStatus(404);
