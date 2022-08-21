@@ -11,6 +11,14 @@ export async function getQdata(req, res) {
   console.log(data);
 }
 
+export async function getMBTI(req, res) {
+  
+  const data = await (
+    QdataRepository.getMBTI());
+  res.status(200).json(data);
+  console.log(data);
+}
+
 export async function getQdataById(req, res, next) {
   const id = req.params.id;
   

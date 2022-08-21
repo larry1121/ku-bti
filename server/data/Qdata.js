@@ -39,7 +39,7 @@ export async function cntReset() {
 
 export async function incrementByIdAndType(id,type) {
   return getQdata()
-  .updateOne(
+  .findOneAndUpdate(
     { id: new Int32(id) },
     { $inc: { "answers.$[element].cnt": 1 } },
     {arrayFilters:[{"element.type":type}]},
@@ -66,6 +66,11 @@ export async function resetMBTI() {
     {arrayFilters:[{"element.cnt": {$gte:0}}]},
     { new: true }
   )
+    
+}
+export async function getMBTI() {
+  return getQdata().find({ id: "MBTI" }).toArray();
+    
     
 }
 
