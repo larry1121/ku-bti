@@ -19,8 +19,11 @@ const Question = ({ QdataService }) => {
   const [cntJ, setCntJ] = useState(0);
   const [cntP, setCntP] = useState(0);
   const [cntK, setCntK] = useState(0);
-  const [cntY, setCntY] = useState(0);
+  const [cntY, setCntY] = useState(0);   
+  const [startcnt,setstartCnt]= useState(true);
+
   useEffect(()=>{
+    
     toNext()
    }, [cntE,
     cntI,
@@ -32,6 +35,8 @@ const Question = ({ QdataService }) => {
     cntP,
     cntK,
     cntY]) 
+    console.log("current number:"+questionNumber);
+    
   console.log(
     `E${cntE} I${cntI} S${cntS} N${cntN} T${cntT} F${cntF} J${cntJ} P${cntP} K${cntK} Y${cntY}`
   );
@@ -63,9 +68,13 @@ const Question = ({ QdataService }) => {
     }
   };
   const toNext = () => {
+    if(startcnt){
+      setstartCnt(false);
+      return;
+    }
     if ( questionNumber < TotalQuestioncnt) setQuestionNumber(questionNumber + 1);
     else {
-
+ 
       const eOri = cntE > cntI ? "E" : "I";
       const sOrn = cntS > cntN ? "S" : "N";
       const tOrf = cntT > cntF ? "T" : "F";
