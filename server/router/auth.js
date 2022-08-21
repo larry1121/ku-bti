@@ -37,6 +37,8 @@ router.get('/me', isAuth, authController.me);
 
 router.get('/',authController.getQdata);
 router.put('/:id/:type',authController.updateQdata);
+router.put('/reset',authController.cntQdataReset);
 router.get('/:id',authController.getQdataById);
+
 
 export default router;

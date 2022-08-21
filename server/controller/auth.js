@@ -41,6 +41,16 @@ export async function updateQdata(req, res, next) {
   // const updated = await tweetRepository.update(id, text);
   res.status(200).json(Qdata);
 }
+export async function cntQdataReset(req, res, next) {
+  
+  const Qdata = await userRepository.cntReset();
+
+  if (!Qdata) {
+    return res.status(404).json({ message: `${id}th question is not found` });
+  }
+  
+  res.status(200).json(Qdata);
+}
 
 
 

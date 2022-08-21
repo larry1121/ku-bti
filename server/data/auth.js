@@ -27,7 +27,11 @@ export async function getAll() {
     
 }
 export async function cntReset() {
-  return getQdata().find()
+  return getQdata().updateMany(
+    {},
+    {$set : {"answers.$[elem].cnt":0}},
+    {arrayFilters:[{"elem.cnt": {$gte:0}}]}
+  )
     
     
 }
