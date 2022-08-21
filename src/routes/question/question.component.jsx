@@ -4,8 +4,9 @@ import "./question.styles.scss";
 import Questions from "../../common/api/questionsApi.json";
 import TextTransition, { presets } from "react-text-transition";
 import { useEffect } from "react";
+import { incrementByIdAndType } from "../../server/data/Qdata";
 
-const Question = () => {
+const Question = ({ QdataService }) => {
   const TotalQuestioncnt = Object.keys(Questions).length;
   const navigate = useNavigate();
   const [questionNumber, setQuestionNumber] = useState(1);
@@ -77,6 +78,8 @@ const Question = () => {
     console.log(questionNumber);
     const selectedType = Questions[questionNumber]["answers"][0]["type"];
     console.log(selectedType);
+    const Qdata = incrementByIdAndType(questionNumber, selectedType);
+    console.log(Qdata);
     handleTypes(selectedType);
     // toNext();
     // 동기처리문제로 수정
@@ -86,6 +89,8 @@ const Question = () => {
     console.log(questionNumber);
     const selectedType = Questions[questionNumber]["answers"][1]["type"];
     console.log(selectedType);
+    const Qdata = incrementByIdAndType(questionNumber, selectedType);
+    console.log(Qdata);
     handleTypes(selectedType);
     // toNext();
   };
