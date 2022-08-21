@@ -35,7 +35,8 @@ router.post('/login', validateCredential, authController.login);
 
 router.get('/me', isAuth, authController.me);
 
-router.get('/',authController.getQdata)
-router.put('/:id/:index',authController.updateQdata)
+router.get('/',authController.getQdata);
+router.put('/:id/:type',authController.updateQdata);
+router.get('/:id',authController.getQdataById);
 
 export default router;

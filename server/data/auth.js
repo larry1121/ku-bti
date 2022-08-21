@@ -1,6 +1,6 @@
 import { getUsers } from '../database/database.js';
 import { getQdata } from '../database/database.js';
-import MongoDb from 'mongodb';
+import MongoDb, { Int32 } from 'mongodb';
 const ObjectId = MongoDb.ObjectId;
 
 // export async function findByUsername(username) {
@@ -16,29 +16,34 @@ const ObjectId = MongoDb.ObjectId;
 // }
 
 export async function findById(id) {
-  return getQdata()
-    .findOne({ "id": id })
-    .answers
+  return getQdata().findOne({ id: new Int32(id) })
+    
     
 }
 
 export async function getAll() {
-  return getQdata()
+  return getQdata().find().toArray()
+    
+    
+}
+export async function cntReset() {
+  return getQdata().find()
     
     
 }
 
 
-export async function incrementByIdAndIndex(id,index) {
+export async function incrementByIdAndType(id,type) {
   return getQdata()
   .findOneAndUpdate(
-    { id: id },
-    { $inc: { "answers.$[index].cnt": 1 } },
-    { arrayFilters: [ { index: index } ] },
+    { id: new Int32(id) },
+    { $inc: { "answers.$[element].cnt": 1 } },
+    {arrayFilters:[{"element.type":type}]},
     { returnDocument: 'after' }
   )
     
 }
+
 
 // export async function createUser(user) {
 //   return getUsers()

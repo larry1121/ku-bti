@@ -5,7 +5,7 @@ let db;
 export async function connectDB() {
   return MongoDb.MongoClient.connect(config.db.host) //
     .then((client) => {
-      db = client.db();
+      db = client.db("KU-bti");
       console.log('init',db);
     });
 }
