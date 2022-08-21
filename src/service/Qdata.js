@@ -7,8 +7,6 @@ export default class QdataService {
   async incrementByIdAndType(id, type) {
     return this.http.fetch(`/Qdata/${id}/${type}`, {
       method: 'PUT',
-      headers: this.getHeaders(),
-      // body: JSON.stringify({ text }),
     });
   }
 

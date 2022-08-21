@@ -4,7 +4,7 @@ import "./question.styles.scss";
 import Questions from "../../common/api/questionsApi.json";
 import TextTransition, { presets } from "react-text-transition";
 import { useEffect } from "react";
-import { incrementByIdAndType } from "../../server/data/Qdata";
+
 
 const Question = ({ QdataService }) => {
   const TotalQuestioncnt = Object.keys(Questions).length;
@@ -63,7 +63,7 @@ const Question = ({ QdataService }) => {
     }
   };
   const toNext = () => {
-    if (questionNumber < TotalQuestioncnt) setQuestionNumber(questionNumber + 1);
+    if ( questionNumber < TotalQuestioncnt) setQuestionNumber(questionNumber + 1);
     else {
 
       const eOri = cntE > cntI ? "E" : "I";
@@ -78,8 +78,9 @@ const Question = ({ QdataService }) => {
     console.log(questionNumber);
     const selectedType = Questions[questionNumber]["answers"][0]["type"];
     console.log(selectedType);
-    const Qdata = incrementByIdAndType(questionNumber, selectedType);
+    const Qdata = QdataService.incrementByIdAndType(questionNumber, selectedType);
     console.log(Qdata);
+    
     handleTypes(selectedType);
     // toNext();
     // 동기처리문제로 수정
@@ -89,7 +90,7 @@ const Question = ({ QdataService }) => {
     console.log(questionNumber);
     const selectedType = Questions[questionNumber]["answers"][1]["type"];
     console.log(selectedType);
-    const Qdata = incrementByIdAndType(questionNumber, selectedType);
+    const Qdata = QdataService.incrementByIdAndType(questionNumber, selectedType);
     console.log(Qdata);
     handleTypes(selectedType);
     // toNext();

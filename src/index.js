@@ -8,7 +8,8 @@ import HttpClient from "./network/http";
 import QdataService from "./service/Qdata";
 
 
-const baseURL = process.env.REACT_APP_BASE_URL;
+// const baseURL = process.env.REACT_APP_BASE_URL;
+const baseURL = "http://localhost:8080";
 // const authErrorEventBus = new AuthErrorEventBus();
 const httpClient = new HttpClient(baseURL);
 const qdataService = new QdataService(httpClient);
