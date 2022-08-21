@@ -20,8 +20,10 @@ const Question = ({ QdataService }) => {
   const [cntP, setCntP] = useState(0);
   const [cntK, setCntK] = useState(0);
   const [cntY, setCntY] = useState(0);   
-  const [startcnt,setstartCnt]= useState(true);
 
+  const [startcnt,setstartCnt]= useState(true);
+  const [firstPer,setFirstPer]= useState(0);
+  const [secondPer,setSecondPer]= useState(0);
   useEffect(()=>{
     
     toNext()
@@ -87,8 +89,12 @@ const Question = ({ QdataService }) => {
     console.log(questionNumber);
     const selectedType = Questions[questionNumber]["answers"][0]["type"];
     console.log(selectedType);
-    const Qdata = QdataService.incrementByIdAndType(questionNumber, selectedType);
+    const Qdata = QdataService.incrementByIdAndType(questionNumber, selectedType).then((result) => console.log(result));
+
+    
+
     console.log(Qdata);
+
     
     handleTypes(selectedType);
     // toNext();
@@ -99,13 +105,13 @@ const Question = ({ QdataService }) => {
     console.log(questionNumber);
     const selectedType = Questions[questionNumber]["answers"][1]["type"];
     console.log(selectedType);
-    const Qdata = QdataService.incrementByIdAndType(questionNumber, selectedType);
-    console.log(Qdata);
+    const Qdata = QdataService.incrementByIdAndType(questionNumber, selectedType).then((result) => setSecondPer(result.answers[1].cnt));
+    //console.log(Qdata);
     handleTypes(selectedType);
     // toNext();
   };
 
-  console.log(Questions[0]);
+  //console.log(Questions[0]);
   return (
     <div className="question-background">
       <div className="question-box">

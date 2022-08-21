@@ -48,6 +48,27 @@ export async function incrementByIdAndType(id,type) {
     
 }
 
+export async function incrementByMBTI(MBTI) {
+  return getQdata()
+  .findOneAndUpdate(
+    { id: "MBTI" },
+    { $inc: { "MBTI.$[element].cnt": 1 } },
+    {arrayFilters:[{"element.id":MBTI}]},
+    { returnDocument: 'after' }
+  )
+    
+}
+export async function resetMBTI() {
+  return getQdata()
+  .findOneAndUpdate(
+    { id: "MBTI" },
+    { $set: { "MBTI.$[element].cnt": 0 } },
+    {arrayFilters:[{"element.cnt": {$gte:0}}]},
+    { returnDocument: 'after' }
+  )
+    
+}
+
 
 // export async function createUser(user) {
 //   return getUsers()

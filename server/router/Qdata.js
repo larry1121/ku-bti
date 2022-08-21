@@ -10,7 +10,10 @@ const router = express.Router();
 router.get('/',QdataController.getQdata);
 router.put('/:id/:type',QdataController.updateQdata);
 router.put('/reset',QdataController.cntQdataReset);
+router.put('/MBTI/hello/:MBTI',QdataController.updateMBTI);
+router.put('/resetmbti',QdataController.mbtiReset);
 router.get('/:id',QdataController.getQdataById);
+
 
 
 export default router;
