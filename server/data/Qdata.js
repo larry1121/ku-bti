@@ -39,32 +39,32 @@ export async function cntReset() {
 
 export async function incrementByIdAndType(id,type) {
   return getQdata()
-  .findOneAndUpdate(
+  .updateOne(
     { id: new Int32(id) },
     { $inc: { "answers.$[element].cnt": 1 } },
     {arrayFilters:[{"element.type":type}]},
-    { returnDocument: 'after' }
+    { new: true }
   )
     
 }
 
 export async function incrementByMBTI(MBTI) {
   return getQdata()
-  .findOneAndUpdate(
+  .updateOne(
     { id: "MBTI" },
     { $inc: { "MBTI.$[element].cnt": 1 } },
     {arrayFilters:[{"element.id":MBTI}]},
-    { returnDocument: 'after' }
+    { new: true }
   )
     
 }
 export async function resetMBTI() {
   return getQdata()
-  .findOneAndUpdate(
+  .updateOne(
     { id: "MBTI" },
     { $set: { "MBTI.$[element].cnt": 0 } },
     {arrayFilters:[{"element.cnt": {$gte:0}}]},
-    { returnDocument: 'after' }
+    { new: true }
   )
     
 }
