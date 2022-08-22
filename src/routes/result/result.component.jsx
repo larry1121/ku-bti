@@ -4,9 +4,20 @@ import "./result.styles.scss";
 import { useState } from "react";
 import DeveloperPage from "../../components/developerPage/developerPage.component";
 import copy from "copy-to-clipboard";
+import { useEffect } from "react";
 
-const Result = () => {
+
+const Result = ({QdataService}) => {
+  useEffect(()=>{
+    QdataService.getMBTI().then(
+      function parse(result) {
+        console.log(result)
+        setMBTIData(result);
+      })
+    
+   }, []) 
   const [clicked, setClicked] = useState(false);
+  const [MBTIdata, setMBTIData] = useState();
   const { mbtiInfo } = useParams();
   var isKorea =true;
   console.log(mbtiInfo);

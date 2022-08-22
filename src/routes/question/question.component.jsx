@@ -25,7 +25,7 @@ const Question =  ({ QdataService }) => {
   const [firstPer,setFirstPer]= useState(0);
   const [secondPer,setSecondPer]= useState(0);
   useEffect(()=>{
-    // c;
+    
     toNext()
    }, [cntE,
     cntI,
@@ -41,7 +41,7 @@ const Question =  ({ QdataService }) => {
     console.log("current number:"+questionNumber);
 
     getCnt(questionNumber);
-    
+
   console.log(
     `E${cntE} I${cntI} S${cntS} N${cntN} T${cntT} F${cntF} J${cntJ} P${cntP} K${cntK} Y${cntY}`
   );
@@ -85,6 +85,11 @@ const Question =  ({ QdataService }) => {
       const tOrf = cntT > cntF ? "T" : "F";
       const jOrp = cntJ > cntP ? "J" : "P";
       const kOry = cntK >= cntY ? "K" : "Y";
+
+      const MBTI = eOri+sOrn+tOrf+jOrp;
+
+      QdataService.incrementMBTI(MBTI).then((result)=>(console.log(result)));
+
       navigate(`/result/${eOri}${sOrn}${tOrf}${jOrp}${kOry}`);
     }
   };

@@ -9,8 +9,18 @@ export default class QdataService {
       method: 'PUT',
     });
   }
+  async incrementMBTI(mbti) {
+    return this.http.fetch(`/Qdata/hello/${mbti}`, {
+      method: 'PUT',
+    });
+  }
   async getQdataById(id) {
     return this.http.fetch(`/Qdata/${id}`, {
+      method: 'GET',
+    });
+  }
+  async getMBTI() {
+    return this.http.fetch(`/Qdata/getmbti/all`, {
       method: 'GET',
     });
   }

@@ -8,7 +8,7 @@ const App = ({ QdataService }) => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/question" element={<Question QdataService={ QdataService }/>} />
-      <Route path="/result/:mbtiInfo" element={<Result />} />
+      <Route path="/result/:mbtiInfo" element={<Result QdataService={ QdataService }/>} />
     </Routes>
   );
 };
