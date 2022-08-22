@@ -6,7 +6,7 @@ import TextTransition, { presets } from "react-text-transition";
 import { useEffect } from "react";
 
 
-const Question = ({ QdataService }) => {
+const Question =  ({ QdataService }) => {
   const TotalQuestioncnt = Object.keys(Questions).length;
   const navigate = useNavigate();
   const [questionNumber, setQuestionNumber] = useState(1);
@@ -25,7 +25,7 @@ const Question = ({ QdataService }) => {
   const [firstPer,setFirstPer]= useState(0);
   const [secondPer,setSecondPer]= useState(0);
   useEffect(()=>{
-    
+    // c;
     toNext()
    }, [cntE,
     cntI,
@@ -37,7 +37,10 @@ const Question = ({ QdataService }) => {
     cntP,
     cntK,
     cntY]) 
+  
     console.log("current number:"+questionNumber);
+
+    getCnt(questionNumber);
     
   console.log(
     `E${cntE} I${cntI} S${cntS} N${cntN} T${cntT} F${cntF} J${cntJ} P${cntP} K${cntK} Y${cntY}`
@@ -85,33 +88,45 @@ const Question = ({ QdataService }) => {
       navigate(`/result/${eOri}${sOrn}${tOrf}${jOrp}${kOry}`);
     }
   };
-  const handleOnClick0 = () => {
+  const handleOnClick0 = async () => {
     console.log(questionNumber);
     const selectedType = Questions[questionNumber]["answers"][0]["type"];
     console.log(selectedType);
-    const Qdata = QdataService.incrementByIdAndType(questionNumber, selectedType).then((result) => console.log(result));
 
-    
+    await QdataService.incrementByIdAndType(questionNumber, selectedType).then((result) => console.log(result));
 
-    console.log(Qdata);
-
+    //await getCnt(questionNumber);
     
     handleTypes(selectedType);
     // toNext();
     // 동기처리문제로 수정
     //https://codingapple.com/unit/react-setstate-async-problems/
   };
-  const handleOnClick1 = () => {
+  const handleOnClick1 = async () => {
     console.log(questionNumber);
     const selectedType = Questions[questionNumber]["answers"][1]["type"];
     console.log(selectedType);
-    const Qdata = QdataService.incrementByIdAndType(questionNumber, selectedType).then((result) => setSecondPer(result.answers[1].cnt));
-    //console.log(Qdata);
+     
+
+    await QdataService.incrementByIdAndType(questionNumber, selectedType).then((result) => console.log(result));
+
+    //await getCnt(questionNumber);
+
     handleTypes(selectedType);
     // toNext();
   };
 
-  //console.log(Questions[0]);
+
+   function getCnt(questionNumber) {
+     QdataService.getQdataById(questionNumber).then(
+      function parse(result) {
+        setFirstPer(result.answers[0].cnt);
+        setSecondPer(result.answers[1].cnt);
+      })
+    
+    console.log(`${questionNumber}번째 문항의 첫 번째 선택지 cnt : ${firstPer}, 두 번째 선택지 cnt : ${secondPer}`);
+   }
+
   return (
     <div className="question-background">
       <div className="question-box">

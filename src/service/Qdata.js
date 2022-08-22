@@ -9,7 +9,11 @@ export default class QdataService {
       method: 'PUT',
     });
   }
-
+  async getQdataById(id) {
+    return this.http.fetch(`/Qdata/${id}`, {
+      method: 'GET',
+    });
+  }
 }
 
 
