@@ -12,7 +12,8 @@ const Result = ({QdataService}) => {
     QdataService.getMBTI().then(
       function parse(result) {
         console.log(result)
-        setMBTIData(result);
+        const MBTIarray =result.MBTI
+        setMBTIData(MBTIarray);
       })
     
    }, []) 
