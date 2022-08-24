@@ -3,7 +3,6 @@ import 'express-async-errors';
 import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
-
 import QdataRouter from './router/Qdata.js';
 import { config } from './config.js';
 import { initSocket } from './connection/socket.js';
