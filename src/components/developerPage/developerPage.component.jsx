@@ -48,6 +48,32 @@ const DeveloperPage = ({ setClicked }) => {
             <p>GitHub</p>
           </button>
         </div>
+        <div className="developer1-info-container">
+          <img
+            class="developer2-picture"
+            src={require("../../assets/developer2.png")}
+            alt="yjwinsta"
+          />
+          <div className="developer1-text-container">
+            <h2>JW Youn</h2>
+            <p>Developer | EE.21</p>
+          </div>
+        </div>
+        <div className="developer1-button-container">
+          <button
+            className="developer1-button-github"
+            onClick={() => {
+              window.open("https://github.com/larry1121");
+            }}
+          >
+            <FontAwesomeIcon
+              icon={faGithub}
+              className="github-icon"
+              size="2x"
+            />
+            <p>GitHub</p>
+          </button>
+        </div>
       </div>
     </div>
   );
