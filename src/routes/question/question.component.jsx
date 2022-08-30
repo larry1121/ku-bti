@@ -97,6 +97,7 @@ const Question =  ({ QdataService }) => {
     console.log(questionNumber);
     const selectedType = Questions[questionNumber]["answers"][0]["type"];
     console.log(selectedType);
+    
 
     await QdataService.incrementByIdAndType(questionNumber, selectedType).then((result) => console.log(result));
 
@@ -132,6 +133,16 @@ const Question =  ({ QdataService }) => {
     console.log(`${questionNumber}번째 문항의 첫 번째 선택지 cnt : ${firstPer}, 두 번째 선택지 cnt : ${secondPer}`);
    }
 
+   function showCnt(cnt){
+
+    setTimeout ( function ()
+{
+
+console . log ( "2초 시간지남." );
+}, 2000 );
+
+   }
+
   return (
     <div className="question-background">
       <div className="question-box">
@@ -154,10 +165,13 @@ const Question =  ({ QdataService }) => {
             <div className="answers-container">
               <button className="button-answer" onClick={handleOnClick0}>
                 {Questions[questionNumber]["answers"][0]["content"]}
+                
               </button>
+              <p>{firstPer+"명이 선택"}</p>
               <button className="button-answer" onClick={handleOnClick1}>
                 {Questions[questionNumber]["answers"][1]["content"]}
               </button>
+              <p>{secondPer+"명이 선택"}</p>
             </div>
             <Link to="/">
               <button className="result-button-to-home">처음으로</button>

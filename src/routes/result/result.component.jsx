@@ -12,13 +12,22 @@ const Result = ({QdataService}) => {
     QdataService.getMBTI().then(
       function parse(result) {
         console.log(result)
-        const MBTIarray =result.MBTI
-        setMBTIData(MBTIarray);
+        
+        setMBTIData(result);
+
+        var Totalcnt=0;
+        for(var i = 0; i < 16; i++){
+          Totalcnt+=MBTIdata[0].MBTI[i].cnt;
+        }
+        setMBTITotal(Totalcnt);
+        setLoading(false);
       })
     
    }, []) 
   const [clicked, setClicked] = useState(false);
   const [MBTIdata, setMBTIData] = useState();
+  const [isDataLoading,setLoading] = useState(true);
+  const [MBTITotal,setMBTITotal] = useState();
   const { mbtiInfo } = useParams();
   var isKorea =true;
   console.log(mbtiInfo);
@@ -39,6 +48,11 @@ const Result = ({QdataService}) => {
       </div>
     );
   }
+
+  const mbtiIndex=Mbtis[mbtiName]["index"];
+  console.log("mbtiIndex : "+mbtiIndex);
+
+
   console.log(mbti["description"][0]);
 
   const handleCopyClipBoard = async (text) => {
@@ -126,6 +140,8 @@ const Result = ({QdataService}) => {
                 Visit KUplace
               </button>
             </div>
+            {isDataLoading? null:            <p>{MBTITotal+"명중에"+MBTIdata[0].MBTI[mbtiIndex].cnt+"명과 같은 결과가 나왔습니다!"}</p>
+}
             <span>
               <p
                 className="result-button-developer"
