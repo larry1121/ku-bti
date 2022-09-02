@@ -1,6 +1,7 @@
 {
   "name": "ku-bti",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -30,7 +31,7 @@
     "deploy": "cp build/index.html build/404.html && gh-pages -d build",
     "predeploy": "npm run build"
   },
-  "homepage": "https://mintway0341.github.io/ku-bti",
+  
   "eslintConfig": {
     "extends": [
       "react-app",
