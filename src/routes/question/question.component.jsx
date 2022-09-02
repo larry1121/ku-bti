@@ -24,10 +24,12 @@ const Question =  ({ QdataService }) => {
   const [startcnt,setstartCnt]= useState(true);
   const [firstPer,setFirstPer]= useState(0);
   const [secondPer,setSecondPer]= useState(0);
+  const [isDataLoading,setLoading] = useState(true);
+  
   useEffect(()=>{
     
     toNext()
-    
+    // eslint-disable-next-line
    }, [cntE,
     cntI,
     cntS,
@@ -124,13 +126,13 @@ const Question =  ({ QdataService }) => {
   };
 
 
-   function getCnt(questionNumber) {
-     QdataService.getQdataById(questionNumber).then(
+   async function getCnt(questionNumber) {
+     await QdataService.getQdataById(questionNumber).then(
       function parse(result) {
         setFirstPer(result.answers[0].cnt);
         setSecondPer(result.answers[1].cnt);
       })
-    
+    setLoading(false);
     console.log(`${questionNumber}번째 문항의 첫 번째 선택지 cnt : ${firstPer}, 두 번째 선택지 cnt : ${secondPer}`);
    }
 
@@ -168,11 +170,12 @@ const Question =  ({ QdataService }) => {
                 {Questions[questionNumber]["answers"][0]["content"]}
                 
               </button>
-              <p>{firstPer+"명이 선택"}</p>
+              {isDataLoading? null:<p>{firstPer+"명이 선택"}</p>}
+             
               <button className="button-answer" onClick={handleOnClick1}>
                 {Questions[questionNumber]["answers"][1]["content"]}
               </button>
-              <p>{secondPer+"명이 선택"}</p>
+              {isDataLoading? null:<p>{secondPer+"명이 선택"}</p>}
             </div>
             <Link to="/">
               <button className="result-button-to-home">처음으로</button>

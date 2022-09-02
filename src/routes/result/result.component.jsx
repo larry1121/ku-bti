@@ -22,7 +22,7 @@ const Result = ({QdataService}) => {
         setMBTITotal(Totalcnt);
         setLoading(false);
       })
-    
+    // eslint-disable-next-line
    }, []) 
   const [clicked, setClicked] = useState(false);
   const [MBTIdata, setMBTIData] = useState();
