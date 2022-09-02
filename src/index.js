@@ -8,7 +8,7 @@ import HttpClient from "./network/http";
 import QdataService from "./service/Qdata";
 
 
-const baseURL = process.env.REACT_APP_BASE_URL;
+const baseURL = "https://ku-bti.herokuapp.com";
 // const baseURL = "http://localhost:8080";
 // const authErrorEventBus = new AuthErrorEventBus();
 const httpClient = new HttpClient(baseURL);

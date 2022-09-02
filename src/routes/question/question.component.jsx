@@ -27,6 +27,7 @@ const Question =  ({ QdataService }) => {
   useEffect(()=>{
     
     toNext()
+    
    }, [cntE,
     cntI,
     cntS,
@@ -133,15 +134,15 @@ const Question =  ({ QdataService }) => {
     console.log(`${questionNumber}번째 문항의 첫 번째 선택지 cnt : ${firstPer}, 두 번째 선택지 cnt : ${secondPer}`);
    }
 
-   function showCnt(cnt){
+//    function showCnt(cnt){
 
-    setTimeout ( function ()
-{
+//     setTimeout ( function ()
+// {
 
-console . log ( "2초 시간지남." );
-}, 2000 );
+// console . log ( "2초 시간지남." );
+// }, 2000 );
 
-   }
+//    }
 
   return (
     <div className="question-background">
