@@ -27,8 +27,14 @@ const Question =  ({ QdataService }) => {
   const [isDataLoading,setLoading] = useState(true);
   
   useEffect(()=>{
+  getCnt(questionNumber);
+  },[])
+
+
+  useEffect(()=>{
     
     toNext()
+    
     // eslint-disable-next-line
    }, [cntE,
     cntI,
@@ -43,7 +49,7 @@ const Question =  ({ QdataService }) => {
   
     console.log("current number:"+questionNumber);
 
-    getCnt(questionNumber);
+   // getCnt(questionNumber);
 
   console.log(
     `E${cntE} I${cntI} S${cntS} N${cntN} T${cntT} F${cntF} J${cntJ} P${cntP} K${cntK} Y${cntY}`
@@ -78,9 +84,13 @@ const Question =  ({ QdataService }) => {
   const toNext = () => {
     if(startcnt){
       setstartCnt(false);
+      
       return;
     }
-    if ( questionNumber < TotalQuestioncnt) setQuestionNumber(questionNumber + 1);
+    if ( questionNumber < TotalQuestioncnt){
+      setQuestionNumber(questionNumber + 1);
+      getCnt(questionNumber);
+    } 
     else {
  
       const eOri = cntE > cntI ? "E" : "I";
@@ -129,8 +139,8 @@ const Question =  ({ QdataService }) => {
    async function getCnt(questionNumber) {
      await QdataService.getQdataById(questionNumber).then(
       function parse(result) {
-        setFirstPer(result.answers[0].cnt);
-        setSecondPer(result.answers[1].cnt);
+        setFirstPer(result.answers[0].cnt*100/(result.answers[0].cnt+result.answers[1].cnt));
+        setSecondPer(result.answers[1].cnt*100/(result.answers[0].cnt+result.answers[1].cnt));
       })
     setLoading(false);
     console.log(`${questionNumber}번째 문항의 첫 번째 선택지 cnt : ${firstPer}, 두 번째 선택지 cnt : ${secondPer}`);
@@ -170,12 +180,12 @@ const Question =  ({ QdataService }) => {
                 {Questions[questionNumber]["answers"][0]["content"]}
                 
               </button>
-              {isDataLoading? null:<p>{firstPer+"명이 선택"}</p>}
+              {isDataLoading? null:<p>{firstPer.toFixed(1)+"%"}</p>}
              
               <button className="button-answer" onClick={handleOnClick1}>
                 {Questions[questionNumber]["answers"][1]["content"]}
               </button>
-              {isDataLoading? null:<p>{secondPer+"명이 선택"}</p>}
+              {isDataLoading? null:<p>{secondPer.toFixed(1)+"%"}</p>}
             </div>
             <Link to="/">
               <button className="result-button-to-home">처음으로</button>

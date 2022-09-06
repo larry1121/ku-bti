@@ -17,9 +17,10 @@ const Result = ({QdataService}) => {
 
         var Totalcnt=0;
         for(var i = 0; i < 16; i++){
-          Totalcnt+=MBTIdata[0].MBTI[i].cnt;
+          Totalcnt+=result[0].MBTI[i].cnt;
         }
         setMBTITotal(Totalcnt);
+        
         setLoading(false);
       })
     // eslint-disable-next-line
@@ -30,6 +31,7 @@ const Result = ({QdataService}) => {
   const [MBTITotal,setMBTITotal] = useState();
   const { mbtiInfo } = useParams();
   var isKorea =true;
+  var percentage=0;
   console.log(mbtiInfo);
   console.log(Mbtis);
   const mbtiName=mbtiInfo.substring(0,4);
@@ -65,7 +67,7 @@ const Result = ({QdataService}) => {
     }
   };
   console.log(mbti["description"].length);
-
+  //percentage =MBTIdata[0].MBTI[mbtiIndex].cnt/MBTITotal;
   
   return (
     <>
@@ -140,7 +142,7 @@ const Result = ({QdataService}) => {
                 Visit KUplace
               </button>
             </div>
-            {isDataLoading? null:            <p>{MBTITotal+"명중에"+MBTIdata[0].MBTI[mbtiIndex].cnt+"명과 같은 결과가 나왔습니다!"}</p>
+            {isDataLoading? null:            <p className="result-button-developer">{`${(MBTIdata[0].MBTI[mbtiIndex].cnt/MBTITotal*100).toFixed(1)}%의 고대생과 같은 유형입니다! (${MBTITotal}명중 ${MBTIdata[0].MBTI[mbtiIndex].cnt}명)`}</p>
 }
             <span>
               <p
