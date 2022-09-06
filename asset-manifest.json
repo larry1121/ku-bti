@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/ku-bti/static/css/main.e3041dc1.css",
-    "main.js": "/ku-bti/static/js/main.c70f85cf.js",
+    "main.js": "/ku-bti/static/js/main.237995e0.js",
     "static/js/787.aa829984.chunk.js": "/ku-bti/static/js/787.aa829984.chunk.js",
     "static/media/pngwing.com.png": "/ku-bti/static/media/pngwing.com.ac9540834ff310725f01.png",
     "static/media/developer1.PNG": "/ku-bti/static/media/developer1.daa179d56ded97594b8f.PNG",
     "static/media/developer2.png": "/ku-bti/static/media/developer2.cca3112cd359d3407fde.png",
     "index.html": "/ku-bti/index.html",
     "main.e3041dc1.css.map": "/ku-bti/static/css/main.e3041dc1.css.map",
-    "main.c70f85cf.js.map": "/ku-bti/static/js/main.c70f85cf.js.map",
+    "main.237995e0.js.map": "/ku-bti/static/js/main.237995e0.js.map",
     "787.aa829984.chunk.js.map": "/ku-bti/static/js/787.aa829984.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e3041dc1.css",
-    "static/js/main.c70f85cf.js"
+    "static/js/main.237995e0.js"
   ]
 }
