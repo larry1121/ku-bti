@@ -5,6 +5,9 @@
 **고대생을 위한 성격유형 검사**
 
 
+https://mintway0341.github.io/ku-bti/ - only FE
+
+https://larry1121.github.io/ku-bti/  - FE & BE
 
 ## Dependencies & Tools
 
